@@ -1,25 +1,21 @@
-resource "aws_subnet" "subnet1-public" {
+resource "aws_subnet" "public-subnets" {
+    count = "${length(var.public_cidrs)}"
     vpc_id ="${aws_vpc.nallabirudu16.id}"
-    availability_zone = "us-east-1a"
-    cidr_block ="${var.public_subnet1_cidr}"
+    availability_zone = "${element(var.azs,count.index)}"
+    cidr_block ="${element(var.public_cidrs,count.index)}"
     tags = {
-        Name = "${var.public_subnet1_name}"
+        Name = "public_Subnet_${count.index+1}"
     }
  }
 
-resource "aws_subnet" "subnet2-public" {
+
+resource "aws_subnet" "private-subnets" {
+    count = "${length(var.private_cidrs)}"
     vpc_id ="${aws_vpc.nallabirudu16.id}"
-    availability_zone = "us-east-1b"
-    cidr_block ="${var.public_subnet2_cidr}"
+    availability_zone = "${element(var.azs,count.index)}"
+    cidr_block ="${element(var.private_cidrs,count.index)}"
     tags = {
-        Name = "${var.public_subnet2_name}"
+        Name = "${var.vpc_name}-private_Subnet_${count.index+1}"
     }
  }
-  resource "aws_subnet" "subnet3-public" {
-    vpc_id ="${aws_vpc.nallabirudu16.id}"
-    availability_zone = "us-east-1c"
-    cidr_block ="${var.public_subnet3_cidr}"
-    tags = {
-        Name = "${var.public_subnet3_name}"
-    }
- }
+

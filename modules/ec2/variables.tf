@@ -1,5 +1,9 @@
 variable "imagename"  {}
-variable "subnetid"  {}
-variable "sgid"  {}
-variable "servername"  {}
+variable "instance_type" {}
+variable "key_name" {}
+variable "sgid" {}
+variable "machinecount" {}
+variable "vpcname" {}
+variable "public-subnets" {}
+
 

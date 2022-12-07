@@ -5,5 +5,6 @@ variable "sgid" {}
 variable "machinecount" {}
 variable "vpcname" {}
 variable "public-subnets" {}
+variable "iam_instance_profile" {}
 
 

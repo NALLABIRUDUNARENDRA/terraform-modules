@@ -26,3 +26,7 @@ output env {
   value = "${module.nallabirudu16-testvpc.env}"
 }
 
+output rolename {
+  value = "${module.nallabirudu16test_iam.rolename}"
+}
+
